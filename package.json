@@ -1,8 +1,8 @@
 {
-  "name": "rollup-lib-template",
+  "name": "rollup-plugin-style",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production",
     "dev": "rollup -c -w --environment NODE_ENV:development",
@@ -30,5 +30,8 @@
     "rollup"
   ],
   "author": "lanyue",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
 }

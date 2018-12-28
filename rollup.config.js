@@ -2,33 +2,33 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const Eslint = require('rollup-plugin-eslint')
 const babel = require('rollup-plugin-babel')
-const Uglify = require('rollup-plugin-uglify')
+// const Uglify = require('rollup-plugin-uglify')
 const pkg = require('./package.json')
 
 const banner =
   '/*!\n' +
   ' * Build version v' + pkg.version + '\n' +
   ' * Create by lanyue@qq.com\n' +
-  ' * Created at ' + new Date() +'\n' +
+  ' * Created at ' + new Date() + '\n' +
   ' */'
 
-const isProduction = process.env.NODE_ENV === 'production'
+// const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   input: 'src/index.js',
   output: [
     {
-      // window.$m
-      name: '$m',
-      file: isProduction ? 'dist/bundle.min.js' : 'dist/bundle.js',
-      format: 'umd',
+      file: 'dist/index.js',
+      format: 'cjs',
       banner: banner,
       sourcemap: false
     }
-    // { file: 'dist/bundle.cjs.js', format: 'cjs' },
-    // { file: 'dist/bundle.esm.js', format: 'esm' },
-    // { file: 'dist/bundle.amd.js', format: 'amd' },
-    // { file: 'dist/bundle.iife.js', format: 'iife', name: '$m' }
+  ],
+  external: [
+    'rollup-pluginutils',
+    'mkdirp',
+    'path',
+    'fs'
   ],
   plugins: [
     Eslint.eslint({
@@ -38,7 +38,6 @@ module.exports = {
     commonjs(),
     babel({
       exclude: 'node_modules/**'
-    }),
-    (isProduction && Uglify.uglify())
+    })
   ]
 }

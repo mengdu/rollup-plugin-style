@@ -15,8 +15,6 @@ function joinStyle (list) {
     list[id].code && styleList.push(compileStyle(list[id].code, list[id].extname))
   }
 
-  if (styleList.length === 0) return null
-
   return styleList.join('')
 }
 

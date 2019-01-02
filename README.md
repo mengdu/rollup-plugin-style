@@ -16,12 +16,12 @@ plugins: [
 
 ### options
 
-+ *options.include* include file; default `['**/*.css']`
-+ *options.exclude* exclude file; default `[]`
-+ *options.output* output type; `style`, `inline`, `file`; default `inline`.
++ **options.include** include file; default `['**/*.css']`
++ **options.exclude** exclude file; default `[]`
++ **options.output** output type; `style`, `inline`, `file`; default `inline`.
   
   - `style` will create a style tag.
   - `inline` use for `import cssText from './xxx.css`.
   - `file` output to file.
 
-+ *options.dest* output file dir.
++ **options.dest** output file dir.

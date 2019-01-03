@@ -25,3 +25,4 @@ plugins: [
   - `file` output to file.
 
 + **options.dest** output file dir.
++ **options.compile** compile handler.

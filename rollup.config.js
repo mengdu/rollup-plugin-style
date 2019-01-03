@@ -28,7 +28,9 @@ module.exports = {
     'rollup-pluginutils',
     'mkdirp',
     'path',
-    'fs'
+    'fs',
+    '@babel/runtime/regenerator',
+    '@babel/runtime/helpers/asyncToGenerator'
   ],
   plugins: [
     Eslint.eslint({
@@ -37,7 +39,9 @@ module.exports = {
     resolve(),
     commonjs(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      runtimeHelpers: true,
+      // externalHelpers: false
     })
   ]
 }

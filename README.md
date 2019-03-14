@@ -2,8 +2,6 @@
 
 A style plugin for rollup.
 
-> unpublish
-
 **use**
 
 ```ls
@@ -16,13 +14,13 @@ plugins: [
 
 ### options
 
-+ **options.include** include file; default `['**/*.css']`
-+ **options.exclude** exclude file; default `[]`
-+ **options.output** output type; `style`, `inline`, `file`; default `inline`.
++ **options.include** Include file; default `['**/*.css']`
++ **options.exclude** Exclude file; default `[]`
++ **options.output** Output type; `style`, `inline`, `file`; default `inline`.
   
-  - `style` will create a style tag.
-  - `inline` use for `import cssText from './xxx.css`.
-  - `file` output to file.
+  - `style` The style tag will be automatically generated and inserted into head.
+  - `inline` Use for `import cssText from './xxx.css`.
+  - `file` Output to file.
 
-+ **options.dest** output file dir.
-+ **options.compile** compile handler.
++ **options.dest** Output file dir.
++ **options.compile = async (code, extname) => {}** Compiler handler support.

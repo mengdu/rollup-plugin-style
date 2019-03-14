@@ -7,7 +7,13 @@ async function build (params) {
     plugins: [
       style({
         output: 'file',
-        dest: 'test/demo/dist/css/test.css'
+        dest: 'test/demo/dist/css/test.css',
+        compile: function (code, extname) {
+          return new Promise(function (resolve) {
+            console.log(code, extname)
+            resolve(code)
+          })
+        }
       })
     ]
   })
@@ -16,6 +22,7 @@ async function build (params) {
     format: 'umd',
     file: 'test/demo/dist/index.js'
   })
+  console.log('Build done')
 }
 
 build()

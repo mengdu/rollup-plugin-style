@@ -35,7 +35,7 @@ export default function plugin (options = {}) {
       return `
         ;(function () {
           function __insertStyle (css) {
-            const style = document.createElement('style')
+            var style = document.createElement('style')
             style.innerHTML = css
             style.type = 'text/css'
             document.head.appendChild(style)

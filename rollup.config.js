@@ -2,17 +2,18 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const Eslint = require('rollup-plugin-eslint')
 const babel = require('rollup-plugin-babel')
-// const Uglify = require('rollup-plugin-uglify')
+const Uglify = require('rollup-plugin-uglify')
 const pkg = require('./package.json')
 
 const banner =
+  '/* eslint-disable */\n' +
   '/*!\n' +
   ' * Build version v' + pkg.version + '\n' +
   ' * Create by lanyue@qq.com\n' +
   ' * Created at ' + new Date() + '\n' +
   ' */'
 
-// const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   input: 'src/index.js',
@@ -20,7 +21,7 @@ module.exports = {
     {
       file: 'dist/index.js',
       format: 'cjs',
-      banner: banner,
+      // banner: banner,
       sourcemap: false
     }
   ],
@@ -40,8 +41,15 @@ module.exports = {
     commonjs(),
     babel({
       exclude: 'node_modules/**',
-      runtimeHelpers: true,
+      runtimeHelpers: true
       // externalHelpers: false
-    })
+    }),
+    (isProduction && Uglify.uglify()),
+    {
+      name: 'banner',
+      renderChunk (code) {
+        return banner + '\n' + code
+      }
+    }
   ]
 }

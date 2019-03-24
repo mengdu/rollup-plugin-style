@@ -9,6 +9,10 @@
     "lint": "eslint src",
     "lintfix": "eslint src --fix"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-runtime": "^7.2.0",
@@ -28,8 +32,16 @@
     "rollup-plugin-uglify": "^6.0.0"
   },
   "keywords": [
-    "rollup"
+    "rollup",
+    "rollup-plugin-style"
   ],
+  "repository": {
+    "type": "https",
+    "url": "git+https://github.com/mengdu/rollup-plugin-style"
+  },
+  "bugs": {
+    "url": "https://github.com/mengdu/rollup-plugin-style/issues"
+  },
   "author": "lanyue",
   "license": "MIT",
   "dependencies": {
